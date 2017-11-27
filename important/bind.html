@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript 绑定事件的三种方式</title>
+</head>
+<body>
+    <!--第一种方式绑定事件-->
+    <div id="btn_one" onclick="show_btn_one()">第一种方式绑定事件（点击看效果）</div>
+    <script type="text/javascript">
+        function show_btn_one(){
+            alert('the first method to bind event for element');
+        }
+    </script>
+
+    <div id="btn_tow">第二种方式绑定事件（点击看效果）</div>
+    <script type="text/javascript">
+        document.getElementById('btn_tow').onclick = function (){
+            alert('the second method to bind event for element');
+        }
+    </script>
+
+    <div id="btn_three">第三种方式绑定事件（点击看效果）</div>
+    <script type="text/javascript">
+        document.getElementById('btn_three').addEventListener('click',show_btn_three);
+        function show_btn_three(){
+            alert('the third method to bind event for element');
+        }
+    </script>
+</body>
+</html>

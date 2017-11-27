@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <style type="text/css">
+        *
+        {
+            padding: 0;
+            margin: 0;
+        }
+        body
+        {
+            background-color: #fffff3;
+            font: 12px/1.6em Helvetica, Arial, sans-serif;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #nav
+        {
+            text-align: center;
+            height: 50px;
+            font-size: 10px;
+            line-height: 30px;
+            background-color: #F0E6DB;
+            margin-bottom: 10px;
+        }
+        .navItem
+        {
+            cursor: pointer;
+            position: relative;
+            float: left;
+            width: 100px;
+            height: 50px;
+            font-size: 15px;
+            border-right: 2px solid rgb(255,255,255);
+            border-left: 2px solid rgb(255,255,255);
+            overflow: hidden;
+            font-weight:bold;
+        }
+        .indexNavItem
+        {
+            border-left: 4px solid rgb(255,255,255);
+            margin-left: 10px;
+        }
+        .lastNavItem
+        {
+            border-right: 4px solid rgb(255,255,255);
+        }
+        .logoutNavItem
+        {
+            float: right;
+            width: 120px;
+            margin-right: 10px;
+            border-left: 4px solid rgb(255,255,255);
+        }
+        .navUl
+        {
+            position: relative;
+            height: 100px;
+            width: 100%;
+            border-bottom: 5px solid rgb(2,159,212);
+        }
+        .navUl li
+        {
+            height: 50px;
+            line-height: 50px;
+        }
+        .highlighter
+        {
+            position: absolute;
+            bottom: 0;
+            height: 5px;
+            width: 100%;
+        }
+        .selectedNav
+        {
+            background-color: #029FD4;
+        }
+        .hoverLi
+        {
+            background-color: #029FD4;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        　　<div class="navItem indexNavItem">
+        　　　　<ul class="navUl">
+        　　　　　　<li>首页</li>
+        　　　　　　<li class="hoverLi">首页</li>
+        　　　　</ul>
+        　　　　<div class="highlighter selectedNav"></div>
+        　　</div>
+        　　<div class="navItem">
+        　　　　<ul class="navUl">
+        　　　　　　<li>A</li>
+        　　　　　　<li class="hoverLi">A</li>
+    </ul>
+        　　　　<div class="highlighter"></div>
+        　　</div>
+        　　<div class="navItem lastNavItem">
+        　　　　<ul class="navUl">
+        　　　　　　<li>A</li>
+        　　　　　　<li class="hoverLi">A</li>
+        　　　　</ul>
+        　　　　<div class="highlighter"></div>
+        　　</div>
+        　　<div id="logoutNavItem" class="navItem logoutNavItem lastNavItem">
+        　　　　<ul class="navUl">
+        　　　　　　<li>退出</li>
+        　　　　　　<li class="hoverLi">退出</li>
+        　　　　</ul>
+        　　　　<div class="highlighter"></div>
+        　　</div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $(".navItem").hover(function() {
+            $(this).children("ul").animate({
+                top: "-50px"
+            }, 100);
+        }, function() {
+            $(this).children("ul").animate({
+                top: "0px"
+            }, 100);
+        });
+
+        $(".navItem").click(function(event) {
+            $(this).siblings().children('.highlighter').removeClass('selectedNav');
+            $(this).children('.highlighter').addClass('selectedNav');
+        });
+    })
+</script>
+</html>

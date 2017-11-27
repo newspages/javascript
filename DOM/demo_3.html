@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript createElement</title>
+</head>
+<body>
+    <span id="span">add Element</span>
+    <script type="text/javascript">
+        var newText = document.createTextNode('My Heading');
+        var h1Element = document.createElement('h1');
+
+        h1Element.appendChild(newText);
+        h1Element = document.body.appendChild(h1Element);
+
+        // 创建 p 元素
+        var newText = document.createTextNode('This is some text in a paragraph');
+        var pElement = document.createElement('p');
+
+        pElement.appendChild(newText);
+        //document.body.appendChild(pElement);
+        console.log(document.getElementById('span'));
+        document.insertBefore(pElement,document.getElementById('span'));
+    </script>
+</body>
+</html>

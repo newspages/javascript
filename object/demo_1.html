@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Demo 1</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var str = 'apple orange banana watermelon grape peach strawberry apple';
+        //console.log(str.indexOf('watermelon'));
+        var pos = 0;
+        var occurrences = 0;
+        while(pos != -1){
+            pos = str.indexOf('apple',pos);
+            if(pos != -1){
+                occurrences++;
+                pos++;
+            }
+        }
+        console.log('apple 出现了 ' + occurrences + ' 次');
+
+        var arr = new Array();
+        arr[0] = 'apple';
+        arr[1] = 'orange';
+        arr[2] = 'banana';
+        arr[3] = 'watermelon';
+        arr[4] = 'grape';
+        arr[5] = 'peach';
+        arr[6] = 'strawberry';
+        arr[7] = 'apple';
+        alert(arr.indexOf('watermelon'));
+        //alert(arr.sort());
+        console.log(arr.length);
+    </script>
+</body>
+</html>

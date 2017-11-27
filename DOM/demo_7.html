@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript Ajax</title>
+</head>
+<body>
+    <a href="./demo_8.html">跳转demo_8</a>
+    <script type="text/javascript">
+        function createXmlHttpRequest(){
+            var xmlHttp;
+            if(window.XMLHttpRequest){
+                xmlHttp = new XMLHttpRequest();
+                return xmlHttp;
+            }else if(window.ActiveXObject){
+                var versions = [
+                    "MSXML2.XmlHttp.6.0",
+                    "MSXML2.XmlHttp.3.0"
+                ];
+                for(var i = 0; i < versions.length ; i++){
+                    try{
+                        xmlHttp = new ActiveXObject(versions[i]); // 或者使用 xmlHttp = new ActiveXObject("Microsoft.XMLHttp"); 创建
+                        return xmlHttp;
+                    }catch(error){
+                        // do nothing here
+                    }
+                }
+            }
+            return null;
+        }
+
+        function xmlHttp_readyStateChange(){
+            if(xmlHttp.readyState == 4){
+                if(xmlHttp.status == 200){
+                    alert(xmlHttp.responseText);
+                }else{
+                    alert("The server return a status code of " + xmlHttp.status);
+                }
+            }
+        }
+        var xmlHttp = createXmlHttpRequest();
+        xmlHttp.open('get',"http://www.javascript.org/server/textdata.txt",true);
+        xmlHttp.onreadystatechange = xmlHttp_readyStateChange;
+        xmlHttp.send(null);
+    </script>
+</body>
+</html>

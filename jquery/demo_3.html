@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery selector</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+    <div id="nav">
+        <ul>
+            <li>段落 1</li>
+            <li>段落 2</li>
+            <li>段落 3</li>
+            <li>段落 4</li>
+        </ul>
+    </div>
+    <div id="content">
+        <ul>
+            <li>内容 1</li>
+            <li>内容 2</li>
+            <li>内容 3</li>
+            <li>内容 4</li>
+        </ul>
+    </div>
+    <div>
+        <a href="#">首页</a>
+        <a href="#">产品</a>
+        <a href="#">学院</a>
+        <a href="#">联系</a>
+    </div>
+    <div>
+        <button>隐藏/显示</button>
+        <img src="http://www.runoob.com/wp-content/uploads/2015/11/rock600x400.jpg" alt="图片文字描述" width="304" height="236">
+        <p><b>注意:</b> 这个事件在不同浏览器效果有所不同，如果图片已缓存该事件则不会触发。</p>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function(){
+        // 选择所有的 li 元素
+        $('li').click(function (){
+            //$(this).hide();
+        });
+        // 选择第一个 li 元素
+        $('li:first').click(function (){
+            //$(this).css('color','red');
+        });
+        // 选择第一个 ul 中的 第一个 li 元素
+        $('ul li:first').click(function (){
+            //$(this).css('color','pink');
+        });
+        // 选取所有 ul 元素中的 第一个 li 元素
+        $('ul li:first-child').click(function (){
+            //$(this).css('color','blue');
+        });
+        // 选取带有 href 属性的元素
+        $('[href]').click(function(){
+            //$(this).css('font-size','100px');
+        });
+        // 选取
+        $('div a:first').click(function (){
+            $(this).css('font-size','20px');
+        });
+        // 选取 id 为 nav 的元素中的 ul 元素的偶数 li 元素
+        $('#nav ul li:even').css('background-color','#8ac007');
+        // 选取 id 为 nav 的元素中的 ul 元素的奇数 li 元素
+        $('#nav ul li:odd').css('background-color','#e5eecc');
+        // 图片加载完成的时候出发 load() 方法
+        $('img').load(function (){
+            alert('图片已经加载成功');
+        });
+        // 点击隐藏图片
+        $('img').click(function (){
+            $(this).hide();
+        });
+        // 设置按钮的背景颜色 和 字体颜色
+        $('button').css({'background-color':'#8ac007','color':'white'});
+        // 隐藏、显示图片 切换
+        $('button').click(function (){
+            $('img').toggle(1000);
+        });
+    });
+</script>

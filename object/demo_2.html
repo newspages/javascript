@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Demo 2</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var numbers = ['21','12','16','66','5','26','19'];
+        function isLisen(value,index,array){
+            var returnvalue = false;
+            if(value > 19){
+                returnvalue = true;
+            }
+            return returnvalue;
+        }
+
+        alert(numbers.every(isLisen));
+        alert(numbers.some(isLisen));
+        alert(numbers.filter(isLisen));
+
+        // 对数组members中的每个值 * 2
+        function doublecount(value,index,array){
+            alert(value*2);
+        }
+        numbers.forEach(doublecount);
+
+        function returnvalue(value,index,array){
+            return value*2;
+        }
+        var map_numbers =numbers.map(returnvalue);
+        console.log(map_numbers4);
+    </script>
+</body>
+</html>

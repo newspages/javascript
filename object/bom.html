@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript 检测浏览器类型</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var browser = 'Unknown';
+        var version = '0';
+        if(window.opera){
+            browser = 'opera';
+            version = '5+';
+            if(window.opera.setPreference){
+                version = '9';
+            }
+        }else if(document.all){ // IE 4+ 和 Opera 7+ 支持 document 对象的 all 属性
+            browser = 'Internet Explorer';
+            version = '6-';
+            if(window.XMLHttpRequest){
+                version = '7+'; // IE 7+ 支持 XMLHttpRequest 属性 （IE 7- 只支持XMLHttpRequest功能不支持该属性）
+            }
+        }else if(window.sidebar){ // Firefox 的 sidebar 属性可以处理边框的工具
+            browser = 'Firefox';
+            version = '1+';
+        }
+        // 输出浏览器的检测结果
+        document.write('浏览器：'+browser+'<br/>'+'版本：'+version);
+    </script>
+</body>
+</html>

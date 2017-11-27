@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript DOM 事件冒泡</title>
+</head>
+<body>
+    <div onclick="fun1(event)">
+        <div onclick="fun2(event)">
+            <div onclick="fun3(event)">
+                <button onkeypress="fun4(event)">点击触发事件</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function fun1(e){
+            alert('fun1');
+        }
+
+        function fun2(e){
+            alert("fun2");
+        }
+
+        function fun3(e){
+            alert("fun3");
+        }
+
+        function fun4(e){
+            alert("fun4");
+            // 阻止冒泡
+            if(e && e.stopPropagation){ // 如果提供了事件对象 event 则为 非 IE 浏览器
+                e.stopPropagation(); // 阻止事件传播
+            }else{
+                // 否则我们需要使用 IE 提供的方式来取消事件冒泡
+                window.event.cancelBubble = true;
+            }
+            var event = e || window.event;
+            alert('X坐标：' + event.clientX);
+            alert('Y坐标：' + event.clientX);
+            alert(event.keyCode);
+        }
+    </script>
+</body>
+</html>

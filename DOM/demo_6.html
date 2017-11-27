@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript DOM XML</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function createDocument(){
+            var xmlDoc;
+            if(window.ActiveXObject){
+                var versions = [
+                    'Msxml2.DOMDocument.6.0',
+                    'Msxml2.DOMDocument.3.0',
+                ];
+
+                for(var i = 0; i < versions.length ; i++){
+                    try{
+                        xmlDoc = new ActiveXObject(versions[i]); // 创建对应版本的 xml
+                        return xmlDoc;
+                    }catch(e){
+                        // you can write some code to deal with the error or do nothing here
+                    }
+                }
+            }else if(document.implementation && document.implementation.createDocument){
+                xmlDoc = document.implementation.createDocument('','',null);
+                return xmlDoc;
+            }
+
+            return null;
+        }
+
+        var xmlDoc = createDocument();
+        xmlDoc.async = false;
+        xmlDoc.load("demo_6.xml");
+        //document.write(xmlDoc.documentElement.getElementsByTagName('to')); // IE
+        var nodeList = xmlDoc.getElementsByTagName('to'); // 非 IE
+        alert(nodeList[0].childNodes[0].nodeValue);
+    </script>
+</body>
+</html>

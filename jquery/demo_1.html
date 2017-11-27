@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery Demo</title>
+    <style type="text/css">
+        ul li{
+            list-style: none;
+            float: left;
+            width:100px;
+            border-right: solid 1px;
+            line-height: 30px;
+            text-align: center;
+            cursor:pointer;
+            background-color: lightpink;
+        }
+        .active{
+            background-color: lightsalmon;
+        }
+        .un_active{
+            background-color: lightpink;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+<div class="nav" id="nav">
+    <ul class="active">
+        <li class="active">首页</li>
+        <li class="">产品</li>
+        <li class="">帮助</li>
+        <li class="">联系</li>
+    </ul>
+</div>
+<div id="div1" style="clear: both;">hello</div>
+
+<script type="text/javascript">
+    /*$(document).ready(function(){
+        $('#nav ul li').click(function (){
+            $('#nav ul li').attr('class','un_active');
+            $(this).attr('class','active');
+        });
+    });*/
+    $(document).ready(function(){
+        $('#nav ul li').click = function(){
+            $('#nav ul li').toggleClass('active');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript</title>
+    <style type="text/css">
+        ul li{
+            list-style: none;
+            float: left;
+            width:100px;
+            border-right: solid 1px;
+            line-height: 30px;
+            text-align: center;
+            cursor:pointer;
+        }
+        .active{
+            background-color: lightsalmon;
+        }
+        .un_active{
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav" id="nav">
+        <ul class="active">
+            <li class="active">首页</li>
+            <li class="un_active">产品</li>
+            <li class="un_active">帮助</li>
+            <li class="un_active">联系</li>
+        </ul>
+    </div>
+    <div id="div1" style="clear: both;">hello</div>
+    <script type="text/javascript">
+        // 遍历 li
+        var li = document.getElementsByTagName('li');
+        for(var i = 0; i < li.length ; i++){
+            li[i].addEventListener('click',function(){
+                for(var i = 0; i < li.length ; i++){
+                    li[i].setAttribute('class','un_active');
+                }
+                this.setAttribute('class','active')
+            });
+        }
+        //alert(document.documentElement.tagName);
+
+        // 返回元素的第一个子节点
+        // (注意：由于DOM中空白也是作为文本节点，所以如果元素里边包含有 空格、回车、制表符 都将会被认为是空白节点 所以如果ul元素后面有空格、回车、制表符 ul.firstChild 返回的结果将是 #text)
+        var ul = document.getElementsByTagName('ul')[0];
+        //ul = removeWhiteNode(ul);
+        // firstElementChild属性可以忽略空格、回车、制表符，但是firstElementChild属性只有现代的浏览器才支持，IE 6、7、8不支持
+        alert(ul.firstElementChild);
+
+        // children可以返回忽略空格、回车、制表符，所有的浏览器都支持该属性
+        alert(ul.children[0]);
+
+        // 清除空白节点
+        function cleanWhitespace(element) {
+            for(var i=0; i<element.childNodes.length; i++)
+            {
+                var node = element.childNodes[i];
+                if(node.nodeType == 3 && !/\S/.test(node.nodeValue))
+                {
+                    node.parentNode.removeChild(node);
+                }
+            }
+            return node;
+        }
+
+        //忽略空白节点
+        function filterWhiteNode(node) {
+            var ret = [];
+            for (var i = 0; i < node.length; i ++) {
+                if (node[i].nodeType === 3 && /^\s+$/.test(node[i].nodeValue)) {
+                    continue;
+                } else {
+                    ret.push(node[i]);
+                }
+            }
+            return ret;
+        }
+
+        //移除空白节点
+        function removeWhiteNode(node) {
+            for (var i = 0; i < node.length; i ++) {
+                if (node[i].nodeType === 3 && /^\s+$/.test(node[i].nodeValue)) {
+                    node[i].parentNode.removeChild(node[i]);
+                }
+            }
+            return node;
+        }
+    </script>
+    <script type="text/javascript">
+        console.log(document.getElementById('div1'));
+        //alert(document.getElementById('div1'));
+    </script>
+</body>
+</html>

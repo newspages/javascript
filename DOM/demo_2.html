@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript DOM</title>
+</head>
+<body>
+    <h1 id="heading1">My Heading</h1>
+    <p id="paragraph1">This is some text in a paragraph</p>
+    <script type="text/javascript">
+        var htmlEle;
+        var headEle;
+        var bodyEle;
+        var h1Ele;
+        var pEle;
+        htmlEle = document.documentElement;//documentElement属性包含了整个html页面中的根节点 即 html
+        alert(htmlEle.tagName);
+        headEle = htmlEle.firstChild;
+        alert(headEle.tagName);
+
+        if(headEle.nextSibling.nodeType == 3){
+            bodyEle = headEle.nextSibling.nextSibling;
+            alert('</head>和<body>之间有空格、回车或者制表符'); // 如果</head><body>之间有空格、回车、制表符就会弹出这个警告框
+        }else{
+            bodyEle = headEle.nextSibling;
+        }
+        alert(bodyEle.tagName);
+
+        if(bodyEle.firstChild.nodeType == 3){
+            h1Ele = bodyEle.firstChild.nextSibling;
+        }else{
+            h1Ele = bodyEle.firstChild;
+        }
+        h1Ele.style.fontFamily = 'Arial';
+        alert(h1Ele.tagName);
+
+        if(h1Ele.nextSibling.nodeType == 3){
+            pEle = h1Ele.nextSibling.nextSibling;
+        }else{
+            pEle = h1Ele.nextSibling;
+        }
+        pEle.style.fontFamily = 'Courier'
+        alert(pEle.tagName);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Ajax</title>
+</head>
+<body>
+    <div id="content" onclick="get_click()">请求前内容</div>
+    <!--<script type="text/javascript">
+        function HttpRequest(sUrl,fpCallback){
+            this.request = this.createXmlHttpRequest();
+            this.request.open("GET",sUrl,true);
+
+            var tempRequest = this.request;
+            function request_readystatechange(){
+                if(tempRequest.readyState == 4){
+                    if(tempRequest.status == 200){
+                        fpCallback(tempRequest.responseText);
+                    }else{
+                        alert("An error occurred trying to contact the server.");
+                    }
+                }
+            }
+            this.request.onreadystatechange = request_readystatechange;
+        }
+
+        HttpRequest.prototype.createXmlHttpRequest = function (){
+            if(window.XMLHttpRequest){
+                var oHttp = new XMLHttpRequest();
+                return oHttp;
+            }else if(window.ActiveXObject){
+                var versions = [
+                    "MSXML2.XmlHttp.6.0",
+                    "MSXML2.XmlHttp.3.0"
+                ];
+
+                for(var i = 0; i < versions.length ; i++){
+                    try{
+                        var oHttp = new ActiveXObject(versions[i]);
+                        return oHttp;
+                    }catch(error){
+                        //  do nothing here
+                    }
+                }
+            }
+            return null;
+        }
+
+        HttpRequest.prototype.send = function (){
+            this.request.send(null);
+        }
+    </script>-->
+    <script type="text/javascript" src="//camelsky.oss-cn-shenzhen.aliyuncs.com/httprequest.js"></script>
+    <script type="text/javascript">
+        function handleData(responseData){
+            //alert(responseData);
+            document.getElementById('content').innerHTML = responseData;
+        }
+
+        var request = new HttpRequest("http://www.javascript.org/server/textdata.txt",handleData);
+
+        //document.getElementById('content').onclick = request.send;
+        function get_click(){
+            //document.getElementById('content').innerHTML = 'content';
+            request.send();
+        }
+    </script>
+</body>
+</html>
